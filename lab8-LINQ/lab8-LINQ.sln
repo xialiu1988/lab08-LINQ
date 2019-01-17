@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab8-LINQ", "lab8-LINQ\lab8-LINQ.csproj", "{0E2D6AC5-485D-46E9-99F6-50B0069D9FEE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{98545CB1-09B1-42DA-8899-5F8E2ACEEA29}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6641C9E7-D663-4404-A4F6-CB02095620CA}"
 	ProjectSection(SolutionItems) = preProject
-		\\Mac\Home\Downloads\data.json = \\Mac\Home\Downloads\data.json
+		data.json = data.json
 	EndProjectSection
 EndProject
 Global
