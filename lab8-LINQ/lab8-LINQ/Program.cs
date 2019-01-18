@@ -13,7 +13,7 @@ namespace lab8_LINQ
     {
         public static void Main(string[] args)
         {
-          //  Console.WriteLine("Hello World!");
+
            List<Properties> list= GetNeighbors(GetObj());//get all the information from the data.json file
             Print(list);//Output all of the neighborhoods in this data list
             IEnumerable<Properties> result=FillterOutNoNameNeighbors(list); // Filter out all the neighborhoods that do not have any names
@@ -25,6 +25,11 @@ namespace lab8_LINQ
             Console.WriteLine("===============");
             Console.WriteLine("===============");
             RomoveDuplicate(list);  // Remove the Duplicates :ouput the unique neighborhoods
+
+
+            //rewrite FillterOutNoNameNeighbors above using lamda,one single query
+            IEnumerable < Properties > res = FillterOutNoNameNeighborsLamda(list);
+            Print(res);
         }
         /// <summary>
         /// while loop traverse the list to see if any two items are same
@@ -57,7 +62,7 @@ namespace lab8_LINQ
             foreach (Properties n in result)
             {
 
-                Console.WriteLine($"{n.zip}  {n.city}  {n.state}  {n.address}  {n.neighborhood} {n.borough} {n.county}");
+                Console.WriteLine($" {n.neighborhood}");
 
             }
         }
@@ -68,7 +73,8 @@ namespace lab8_LINQ
         {
             foreach (Properties n in list)
             {
-                Console.WriteLine($"{n.zip}  {n.city}  {n.state}  {n.address}  {n.neighborhood} {n.borough} {n.county}");
+                
+                Console.WriteLine($" {n.neighborhood}");
 
             }
         }
@@ -87,6 +93,24 @@ namespace lab8_LINQ
             return result;
 
         }
+
+        /// <summary>
+        /// rewrite--using lambda
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static IEnumerable<Properties> FillterOutNoNameNeighborsLamda(List<Properties> list)
+        {
+            var result = list.Where((n) =>  n.neighborhood.Length != 0);
+         
+
+            return result;
+
+        }
+
+
+
+
 
         public static List<Properties> GetNeighbors(JObject jObject)
         {
@@ -123,11 +147,6 @@ namespace lab8_LINQ
             JObject o = JObject.Parse(st);
         return o;
         }
-
-
-
-
-
 
     }
 }
