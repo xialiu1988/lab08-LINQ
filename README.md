@@ -23,8 +23,7 @@ For Example, we can get result print out when we fill out those empty neighbotho
 ![n](noname.png)
 
 
-From the above image we can see we have duplicates ,we have two Upper West Side, now we use RomoveDuplicate(list) to filter out duplicates
-
+From the above image we can see we have duplicates ,we have two Upper West Side, now we use query3 to remove the duplicates
 
 ![u](u.png)
 
