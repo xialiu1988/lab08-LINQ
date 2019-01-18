@@ -25,7 +25,9 @@ namespace lab8_LINQ
             Console.WriteLine("===============");
             Console.WriteLine("===============");
             RomoveDuplicate(list);  // Remove the Duplicates :ouput the unique neighborhoods
-
+            Console.WriteLine("===============");
+            Console.WriteLine("===============");
+            Console.WriteLine("===============");
 
             //rewrite FillterOutNoNameNeighbors above using lamda,one single query
             IEnumerable < Properties > res = FillterOutNoNameNeighborsLamda(list);
