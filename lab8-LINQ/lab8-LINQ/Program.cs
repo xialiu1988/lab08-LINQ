@@ -13,7 +13,7 @@ namespace lab8_LINQ
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+          //  Console.WriteLine("Hello World!");
            List<Properties> list= GetNeighbors(GetObj());//get all the information from the data.json file
             Print(list);//Output all of the neighborhoods in this data list
             IEnumerable<Properties> result=FillterOutNoNameNeighbors(list); // Filter out all the neighborhoods that do not have any names
@@ -24,15 +24,40 @@ namespace lab8_LINQ
             Console.WriteLine("===============");
             Console.WriteLine("===============");
             Console.WriteLine("===============");
-                         // Remove the Duplicates
+            RomoveDuplicate(list);  // Remove the Duplicates :ouput the unique neighborhoods
         }
+        /// <summary>
+        /// while loop traverse the list to see if any two items are same
+        /// </summary>
+        /// <param name="list"></param>
+      public static void RomoveDuplicate(List<Properties> list)
+        {
+            int i = 0;
+            List<string> distinctElements = new List<string>();
+            while (i < list.Count)
+            {
+                if (!distinctElements.Contains(list[i].neighborhood))
+                    distinctElements.Add(list[i].neighborhood);
+                i++;
+            }
+
+            foreach (var item in distinctElements)
+            {
+                Console.WriteLine(item);
+                
+            }
+
+          
+            }
+
+
 
         public static void Print(IEnumerable<Properties> result)
         {
             foreach (Properties n in result)
             {
 
-                Console.WriteLine(n.neighborhood);
+                Console.WriteLine($"{n.zip}  {n.city}  {n.state}  {n.address}  {n.neighborhood} {n.borough} {n.county}");
 
             }
         }
@@ -43,13 +68,16 @@ namespace lab8_LINQ
         {
             foreach (Properties n in list)
             {
-
-                Console.WriteLine(n.neighborhood);
+                Console.WriteLine($"{n.zip}  {n.city}  {n.state}  {n.address}  {n.neighborhood} {n.borough} {n.county}");
 
             }
         }
 
-
+        /// <summary>
+        /// LINQ to query from the list 
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns>new list</returns>
         public static IEnumerable<Properties> FillterOutNoNameNeighbors(List<Properties> list)
         {
             IEnumerable<Properties> result = from n in list
@@ -63,9 +91,11 @@ namespace lab8_LINQ
         public static List<Properties> GetNeighbors(JObject jObject)
         {
             var o = jObject["features"];
+            //create a new list type is Properties, is empty ,waiting to be added 
             List<Properties> neighbors = new List<Properties>();
+          
             foreach (var item in o)
-            {
+            { //start create net Properties type of object
                 Properties pro = new Properties
                 {
                   zip = (string)item["properties"]["zip"],
@@ -78,7 +108,7 @@ namespace lab8_LINQ
 
                 };
 
-                neighbors.Add(pro);
+                neighbors.Add(pro);//add this new object to the list
 
             }
             return neighbors;
