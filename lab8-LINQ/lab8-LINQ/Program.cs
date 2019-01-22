@@ -124,7 +124,7 @@ namespace lab8_LINQ
         /// <returns></returns>
         public static JObject GetObj()
         {    
-           var stream = File.OpenText("c:/Users/xialiu/codefellows401/lab08-linq/lab8-LINQ/lab8-LINQ/data.json");
+           var stream = File.OpenText("../../../data.json");
             //Read the file              
             string st = stream.ReadToEnd();
             JObject o = JObject.Parse(st);
